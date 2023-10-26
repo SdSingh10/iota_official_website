@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="./css/clubRegisteration.css">
+</head>
+
+<body>
+    <div class="container" style="width: 60vw;">
+        <h2>Student Login Page</h2>
+        <form>
+            <div class="form-group">
+                <label for="student-email">Official Mail</label>
+                <input type="email" id="studentmail" name="student-email" required="">
+            </div>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" id="password" name="Password" required="">
+            </div>
+            <div class="submitBtn">
+                <div class="form-group">
+                    <input type="submit" value="Register">
+                </div>
+                <div class="form-group">
+                    <a href="./index.html"><input type="cancel" value="Cancel" id="cancel"></a>
+                </div>
+                <div class="form-group">
+                    <a href="./studentregistration.html"><input type="createAcc" value="Create Account"></a>  
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+        // adding skills
+        document.getElementById("addskills").addEventListener("click", function () {
+            var skillsContainer = document.getElementById("skillsContainer");
+            var skills = document.querySelector(".skills");
+            var newskills = skills.cloneNode(true);
+            skillsContainer.appendChild(newskills);
+            clearInputFields(newskills);
+
+            //remove skills
+            var removeButton = document.createElement("button");
+            removeButton.setAttribute("type", "button");
+            removeButton.classList.add("removeskills");
+            removeButton.textContent = "X";
+            removeButton.style.position = "absolute";
+            removeButton.style.padding = "0";
+            newskills.appendChild(removeButton);
+        });
+
+        // removing skills
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("removeskills")) {
+                event.target.closest(".skills").remove();
+            }
+        });
+
+
+
+        // clearing input fields
+        function clearInputFields(container) {
+            var inputFields = container.querySelectorAll("input");
+            inputFields.forEach(function (input) {
+                input.value = '';
+            });
+        }
+
+    </script>
+</body>
+
+</html>

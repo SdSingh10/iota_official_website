@@ -1,0 +1,54 @@
+.projects {
+    padding: 20px;
+    background-color: #122136;
+    color: white;
+}
+.projects .projItem{
+    margin: 10px 30px;
+    border: 1px solid white;
+    border-radius: 30px;
+    background-color: #1e2e44;
+    padding: 30px;
+}
+.projName {
+    font-size: 25px;
+    font-family: 'Enriqueta', serif;
+    display: flex;
+}
+.projLink {
+    border: 2px solid hotpink; border-radius: 10px;
+    display: inline-block;
+    padding: 5px 10px;  margin: 5px;
+    background-color: rgba(255, 105, 180, 0.322);
+    color: hotpink; cursor: pointer;
+    font-family: 'Play';
+    font-size: 10px;
+}
+.projLink:hover {
+    transform: scale(1.08);
+}
+.projDesc {
+    margin: 4px 0px;
+    font-family: 'Titillium Web', sans-serif;
+}
+.projItem ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+.projItem li {
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(0, 255, 255, 0.19);
+    border: 2px solid cyan;
+    color: cyan;
+    border-radius: 10px;
+    width: 45px;
+    margin: 5px;
+    font-family: 'Play';
+}
+.projects p {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Graduate', serif;
+}

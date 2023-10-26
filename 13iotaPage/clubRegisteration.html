@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOTA</title>
+    <link rel="stylesheet" href="css/clubRegisteration.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Club Registration Form</h2>
+        <form>
+
+            <!-- club name -->
+            <div class="form-group">
+                <label for="clubName">Club Name</label>
+                <input type="text" id="clubName" name="clubName" required>
+            </div>
+
+
+            <!-- club heads -->
+            <div class="form-group">
+                <label for="clubHeads">Club Heads</label>
+                <div id="clubHeadsContainer">
+                    <div class="club-head">
+                        <input type="text" name="clubHeadName[]" placeholder="Name" required>
+                        <input type="text" name="clubHeadRollNo[]" placeholder="Roll No" required>
+                    </div>
+                </div>
+                <button type="button" id="addClubHead">Add Club Head</button>
+            </div>
+
+
+            <!-- core members -->
+            <div class="form-group">
+                <label for="coreMembers">Core Members</label>
+                <div id="coreMembersContainer">
+                    <div class="core-member">
+                        <input type="text" name="coreMemberName[]" placeholder="Name" required>
+                        <input type="text" name="coreMemberRollNo[]" placeholder="Roll No" required>
+                        <input type="text" name="coreMemberDepartment[]" placeholder="Department (if any)">
+                    </div>
+                </div>
+                <button type="button" id="addCoreMember">Add Core Member</button>
+            </div>
+
+
+            <!-- description -->
+            <div class="form-group">
+                <label for="clubDescription">Club Description</label>
+                <textarea id="clubDescription" name="clubDescription" rows="4" required></textarea>
+            </div>
+
+
+            <!-- logo -->
+            <div class="form-group">
+                <label for="logo">Logo</label>
+                <input type="file" id="logo" name="logo" accept="image/*" required>
+            </div>
+
+
+            <!-- banner -->
+            <div class="form-group">
+                <label for="coverPhoto">Cover Photo</label>
+                <input type="file" id="coverPhoto" name="coverPhoto" accept="image/*" required>
+            </div>
+
+
+
+            <!-- members list -->
+            <div class="form-group">
+                <label for="allMembers">All Members</label>
+                <div id="allMembersContainer">
+                    <div class="all-member">
+                        <input type="text" name="allMemberName[]" placeholder="Name" required>
+                        <input type="text" name="allMemberRollNo[]" placeholder="Roll No" required>
+                        <input type="text" name="coreMemberDepartment[]" placeholder="Department (if any)">
+                    </div>
+                </div>
+                <button type="button" id="addAllMember">Add Club Member</button>
+            </div>
+
+
+
+            <!-- departments -->
+            <div class="form-group">
+                <label for="departments">List of Departments [ If Any]</label>
+                <div id="departmentsContainer">
+                    <div class="department">
+                        <input type="text" name="departmentName[]" placeholder="Department">
+                    </div>
+                </div>
+                <button type="button" id="addDepartment">Add Department</button>
+            </div>
+
+            <!-- insta link -->
+            <div class="form-group">
+                <label for="instaLink">Instagram Link</label>
+                <input type="url" id="instaLink" name="instaLink">
+            </div>
+
+            <!-- twitter link -->
+            <div class="form-group">
+                <label for="twitterLink">Twitter Link</label>
+                <input type="url" id="twitterLink" name="twitterLink">
+            </div>
+            
+        
+            <!-- submit Button -->
+            <div class="submitBtn">
+                <div class="form-group">
+                    <input type="submit" value="Register">
+                </div>
+                <div class="form-group">
+                    <input type="cancel" value="Cancel">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        
+    // adding departments
+    document.getElementById("addDepartment").addEventListener("click", function() {
+        var departmentsContainer = document.getElementById("departmentsContainer");
+        var department = document.querySelector(".department");
+        var newDepartment = department.cloneNode(true);
+        departmentsContainer.appendChild(newDepartment);
+        clearInputFields(newDepartment);
+
+        //remove departments
+        var removeButton = document.createElement("button");
+            removeButton.setAttribute("type", "button");
+            removeButton.classList.add("removeDepartment");
+            removeButton.textContent = "X";
+            removeButton.style.position = "absolute";
+            removeButton.style.padding = "0";
+            newDepartment.appendChild(removeButton);
+    });
+
+    // removing departments
+    document.addEventListener("click", function(event) {
+        if (event.target.classList.contains("removeDepartment")) {
+            event.target.closest(".department").remove();
+        }
+    });
+
+    // adding club heads
+    document.getElementById("addClubHead").addEventListener("click", function() {
+        var clubHeadsContainer = document.getElementById("clubHeadsContainer");
+        var clubHead = document.querySelector(".club-head");
+        var newClubHead = clubHead.cloneNode(true);
+        clubHeadsContainer.appendChild(newClubHead);
+        clearInputFields(newClubHead);
+
+        //remove button
+        var removeButton = document.createElement("button");
+            removeButton.setAttribute("type", "button");
+            removeButton.classList.add("removeClubHead");
+            removeButton.textContent = "X";
+            removeButton.style.position = "absolute";
+            removeButton.style.padding = "0";
+            newClubHead.appendChild(removeButton);
+    });
+
+    // removing club heads
+    document.addEventListener("click", function(event) {
+        if (event.target.classList.contains("removeClubHead")) {
+            event.target.closest(".club-head").remove();
+        }
+    });
+
+    // adding core members
+    document.getElementById("addCoreMember").addEventListener("click", function() {
+        var coreMembersContainer = document.getElementById("coreMembersContainer");
+        var coreMember = document.querySelector(".core-member");
+        var newCoreMember = coreMember.cloneNode(true);
+        coreMembersContainer.appendChild(newCoreMember);
+        clearInputFields(newCoreMember);
+
+        //remove button
+        var removeButton = document.createElement("button");
+            removeButton.setAttribute("type", "button");
+            removeButton.classList.add("removeCoreMember");
+            removeButton.textContent = "X";
+            removeButton.style.position = "absolute";
+            removeButton.style.padding = "0";
+            newCoreMember.appendChild(removeButton);
+    });
+
+    // removing core members
+    document.addEventListener("click", function(event) {
+        if (event.target.classList.contains("removeCoreMember")) {
+            event.target.closest(".core-member").remove();
+        }
+    });
+
+    // adding club members
+    document.getElementById("addAllMember").addEventListener("click", function() {
+        var allMembersContainer = document.getElementById("allMembersContainer");
+        var allMember = document.querySelector(".all-member");
+        var newAllMember = allMember.cloneNode(true);
+        allMembersContainer.appendChild(newAllMember);
+        clearInputFields(newAllMember);
+
+        //remove button
+        var removeButton = document.createElement("button");
+            removeButton.setAttribute("type", "button");
+            removeButton.classList.add("removeAllMember");
+            removeButton.textContent = "X";
+            removeButton.style.position = "absolute";
+            removeButton.style.padding = "0";
+            newAllMember.appendChild(removeButton);
+    });
+
+    // removing club members
+    document.addEventListener("click", function(event) {
+        if (event.target.classList.contains("removeAllMember")) {
+            event.target.closest(".all-member").remove();
+        }
+    });
+
+    // clearing input fields
+    function clearInputFields(container) {
+        var inputFields = container.querySelectorAll("input");
+        inputFields.forEach(function(input) {
+            input.value = '';
+        });
+    }
+    </script>
+</body>
